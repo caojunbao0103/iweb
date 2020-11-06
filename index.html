@@ -9,27 +9,7 @@
 		<link rel="stylesheet" href="css/base.css">
 		<link rel="stylesheet" href="css/font-awesome.css">
 		<style>
-			/* .parent {
-				width: 600px;
-				height: 500px;
-				background: #ff0;
 
-			}
-
-			.left {
-				width: 200px;
-				height: 100px;
-				background: #f00; */
-			/* 浮动 */
-			/* 	float: left;
-			}
-
-			.right {
-				width: 400px;
-				height: 200px;
-				background: #0f0;
-				float: right;
-			} */
 
 			.topbar {
 				width: 100%;
@@ -44,7 +24,6 @@
 				width: 1000px;
 				margin-right: auto;
 				margin-left: auto;
-				background: 1px solid #aaa;
 				border: 1px solid blue;
 			}
 
@@ -61,6 +40,10 @@
 			.theme-reverse{
 				
 			}
+			.searchbar{
+				width: 100%;
+				background: #FFFFFF;
+			}
 
 			.searchbar>.container {
 				padding-top: 2em;
@@ -68,7 +51,7 @@
 			}
 			.search{
 				float: right;
-				margin-top: 7px;
+				margin-top: 6px;
 			}
 			
 			.search>input{
@@ -77,19 +60,89 @@
 				border: 1px solid #ccc;
 				/* 搜索外围轮廓 */
 				outline: none;
+				
 				padding-left: .6em ;
 				padding-right: .6em ;
 				}
 			.search>.fa-search{
 				background-color: #578c4c;
 				color: #fff;
-				font-size: 1.5em;
+				font-size: 2.2em;
 				width: 50px;
 				height: 32px;
 				line-height:32px ;
 				text-align: center;
+				/* vertical-align: middle;
+				行内块与同一行其他内容竖值对齐 */
 			}
+			.cart-container{
+				/* 修改购物车定位方式，为下拉菜单作参照物 */
+				position:relative;
+				float: right;
+				margin-top: 7px;
+				margin-left: 20px;
+				
 			}
+			.cart{
+				background: #F9F9F9;
+				border: 1px solid #ddd;
+				line-height: 31px;
+				/* 修改光标 */
+				cursor: pointer;
+				/* 压在别人上方 */
+				z-index: 1;
+				/* 修改购物车定位方式，为下拉菜单作参照物 */
+				position:relative;
+				
+			}
+			.cart.open{
+				background: #FFFFFF;
+				border-bottom: none;
+				/* 底边框颜色变默认 */
+				
+				
+			}
+			.cart>.fa{
+				padding-left: 0.6em;
+				padding-right: 0.6em;
+				color: #57bc4c;
+				
+				}
+			.cart>.caret{
+				transform: rotate(0);
+				transition: all .3s;
+			}
+			
+			.cart>.caret-rotate{
+				
+				transform: rotate(180deg);
+			}
+			.cart-container>.dropdown{
+				background: #FFFFFF;
+				position: absolute;
+				/* 绝对定位可处于其他元素上 */
+				top:  31px;
+				right: -1px;
+				border: 1px solid #ddd;
+				padding: 2em 3em ;
+				width: 262px;
+				cursor: pointer;
+				display: none;
+				
+				
+			}
+			.cart-container>.dropdown.open{
+				display: block;
+			}	
+					.navbar{
+						background: #57BC4C;
+						width: 100%;
+						height: 42px;
+						color: #FFFFFF;
+						line-height: 40px;
+						border-bottom:2px solid #c1eebd;
+						
+					}
 		</style>
 	</head>
 	<body>
@@ -119,28 +172,55 @@
 			</div>
 		</div>
 
-
 		<!-- 搜索条 -->
+
 		<div class="searchbar">
-			<div class="container">
+			<div class="container" id="myCart">
 				<!-- logo -->
 				<img src="img/logo.png" alt="iwb logo">
+				<!-- 我的购物车 -->
+				<div class="cart-container" >
+					<!-- 购物车 -->
+					<div class="cart" id="de" >
+
+						<span class="fa fa fa-shopping-cart"></span>
+						<span>我的购物车（<b>0</b>)</span>
+						<span class="fa fa-caret-down caret" id="caret"></span>
+					</div>
+					<!-- 下拉菜单 -->
+					<div class="dropdown" id="down" >
+						请登录后查看你的购物车
+					</div>
+				</div>
 				<div class="search">
 					<input type="text" placeholder="课程搜索"><span class="fa fa-search fa-lg"></span>
-			</div>
-				<!-- 我的购物车 -->
+				</div>
 
 			</div>
 		</div>
-		<!-- 输入框 -->
-		.
-		<!-- <input type="password"> -->
-		<!-- 	<input type="button"value="注册"> -->
 
-		<!-- 我的购物车 -->
-		<!-- <h1>盒子模型-尺寸的计算方案</h1>
-		<div class="parent">
-			<div class="left">左菜单</div>
-			<div class="right">右菜单</div> -->
+
+		<!-- 导航条 -->
+		<div class="navbar">
+			<div class="container">
+				<!-- 左侧功能表 -->
+				
+			</div>
+		</div>
+		<script>
+			// 鼠标进入我的购物车悬停,小三角旋转
+			myCart.onmouseenter = () => {
+				caret.classList.add('caret-rotate')
+				de.classList.add('open')
+				down.classList.add('open')
+			}
+			myCart.onmouseleave = () => {
+
+				caret.classList.remove('caret-rotate')
+				de.classList.remove('open')
+				down.classList.remove('open')
+			}
+			
+		</script>
 	</body>
 </html>
