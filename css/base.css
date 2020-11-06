@@ -1,0 +1,22 @@
+/* 共用全局css */
+/* 边框盒子 */
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	color: #555;
+	background: #fff;
+	font-size: 12px;
+	line-height: 1.667;
+}
+
+a {
+	color: #555555;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #f60;
+}
